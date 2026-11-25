@@ -6,10 +6,10 @@
 <title>Raidlight Ultralight 24–30 L — Carnet d’Endurance</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Le test du Raidlight Ultralight 24–30 L par Malik : 644 km sur la Grande Traversée des Alpes, ses points forts et ses limites.">
-<meta name="theme-color" content="#0b1114">
+<meta name="theme-color" content="#0f0d0b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Jost:wght@400;500;600&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Jost:wght@300;400;500;600&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,7 +30,6 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="header-tools">
-      <p class="odometer" aria-hidden="true"><span class="odo-label">km</span><span class="odo-value" id="odo">000</span><span class="odo-total">/ 644</span></p>
       <button class="icon-btn" id="search-open" type="button" aria-label="Rechercher dans ce test">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
       </button>
@@ -55,19 +54,24 @@
 <main>
 
 <!-- ============ HERO ============ -->
-<section class="hero" id="haut" aria-labelledby="hero-title" data-bg="#0b1114">
+<section class="hero" id="haut" aria-labelledby="hero-title" data-bg="#0f0d0b">
+  <img class="hero-land" src="assets/hero-mountains.webp" alt="" width="1440" height="1024" fetchpriority="high">
   <div class="hero-stage" id="hero-stage">
-    <img class="hero-bg" src="assets/IMG_6232.webp" alt="" width="1800" height="2400" fetchpriority="high">
-    <img class="hero-fg" src="assets/hero6232-fg.webp" alt="Malik porte le Raidlight Ultralight 24–30 L chargé, vu de profil" width="1800" height="2400">
+    <img class="hero-fg" fetchpriority="high" src="assets/hero6232-fg.webp" alt="Malik porte le Raidlight Ultralight 24–30 L chargé, vu de profil" width="1800" height="2400">
   </div>
-  <p class="hero-word" id="hero-word" aria-hidden="true"><span class="w-row">Ultra</span><span class="w-row">light</span></p>
+  <h1 class="hero-word" id="hero-word"><span class="sr" id="hero-title">Raidlight Ultralight 24–30 L</span><span class="w-rows" aria-hidden="true"><span class="w-row">Raidlight</span><span class="w-row">Ultralight <span class="w-size">24–30 L</span></span></span></h1>
   <div class="hero-scrim" aria-hidden="true"></div>
 
   <div class="hero-content wrap">
     <div class="hero-copy">
+      <p class="crumbs"><span>Tests matos</span><span>Sacs</span><span>Fastpacking</span></p>
       <p class="eyebrow">Grande Traversée des Alpes · Été 2026</p>
-      <h1 id="hero-title" class="hero-h1">Raidlight Ultralight <span>24–30 L</span></h1>
       <p class="hero-intro">Le sac qui m’a accompagné sur la Grande Traversée des Alpes.</p>
+      <p class="hero-deck">330 g, un vrai portage gilet et juste ce qu’il faut de volume pour courir, marcher et vivre dehors.</p>
+      <div class="test-meta">
+        <p class="byline"><span class="avatar" aria-hidden="true">M</span><span>Test réalisé par Malik<br><time datetime="2026">Été 2026</time></span></p>
+        <p class="purchase-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span><strong>Sac acheté par mes soins.</strong> Aucun partenariat ni lien affilié avec Raidlight.</span></p>
+      </div>
       <a class="read-cta" href="#article">
         <span class="read-ring" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
         Mon retour après 644 km
@@ -78,19 +82,15 @@
 
   <div class="hero-stats wrap" role="list">
     <div class="stat" role="listitem">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19c3-1 3-5 7-6s4-6 9-8"/><circle cx="4" cy="19" r="1.6"/><circle cx="20" cy="5" r="1.6"/></svg>
       <p><strong><span class="count" data-count="644">644</span> <small>km</small></strong><span>sur la GTA</span></p>
     </div>
     <div class="stat" role="listitem">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 20 7-12 4 6 3-4 6 10z"/></svg>
       <p><strong><span class="count" data-count="35000">35 000</span> <small>m D+</small></strong><span>de dénivelé positif</span></p>
     </div>
     <div class="stat" role="listitem">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
       <p><strong><span class="count" data-count="20">20</span> <small>jours</small></strong><span>en solo autonome</span></p>
     </div>
     <div class="stat" role="listitem">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8a4 4 0 1 1 8 0"/><path d="M5 8h14l2 12H3z"/></svg>
       <p><strong><span>7–8,5</span> <small>kg</small></strong><span>de charge habituelle</span></p>
     </div>
     <span class="stats-glow" aria-hidden="true"></span>
@@ -98,17 +98,7 @@
 </section>
 
 <!-- ============ PROLOGUE ============ -->
-<section class="prologue" aria-label="Présentation du test" data-bg="#0b1114">
-  <div class="wrap prologue-grid">
-    <p class="crumbs"><span>Tests matos</span><span>Sacs</span><span>Fastpacking</span></p>
-    <p class="intro-mobile">Le sac qui m’a accompagné sur la Grande Traversée des Alpes.</p>
-    <p class="deck" id="deck">330 g, un vrai portage gilet et juste ce qu’il faut de volume pour courir, marcher et vivre dehors.</p>
-    <div class="test-meta">
-      <p class="byline"><span class="avatar" aria-hidden="true">M</span><span>Test réalisé par Malik<br><time datetime="2026">Été 2026</time></span></p>
-      <p class="purchase-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span><strong>Sac acheté par mes soins.</strong> Aucun partenariat ni lien affilié avec Raidlight.</span></p>
-    </div>
-  </div>
-
+<section class="prologue" aria-label="Derrière ce carnet" data-bg="#0f0d0b">
   <div class="wrap author-band">
     <div class="author-card">
       <button class="author-portrait zoomable" type="button" data-zoom="assets/malik-portrait-v9.jpg" data-caption="Malik, en course à pied." aria-label="Agrandir : Malik, en course à pied.">
@@ -167,7 +157,7 @@
   <div class="toc-sheet" id="toc-sheet" hidden></div>
 
   <!-- RESUME -->
-  <section class="chapter resume" id="resume" data-title="À retenir" data-bg="#0b1114">
+  <section class="chapter resume" id="resume" data-title="À retenir" data-bg="#0f0d0b">
     <div class="wrap">
       <div class="resume-card" data-reveal>
         <div class="resume-main">
@@ -206,7 +196,7 @@
   </section>
 
   <!-- CONTEXTE -->
-  <section class="chapter contexte" id="contexte" data-title="Le contexte" data-bg="#0d1913">
+  <section class="chapter contexte" id="contexte" data-title="Le contexte" data-bg="#15110c">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Pourquoi ce sac ?</p>
@@ -283,7 +273,7 @@
   </section>
 
   <!-- CARACTERISTIQUES -->
-  <section class="chapter specs" id="caracteristiques" data-title="Les caractéristiques" data-bg="#121518">
+  <section class="chapter specs" id="caracteristiques" data-title="Les caractéristiques" data-bg="#121110">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Fiche technique</p>
@@ -322,7 +312,7 @@
   </section>
 
   <!-- COMPARAISON -->
-  <section class="chapter compare" id="comparaison" data-title="Face à la concurrence" data-bg="#121518">
+  <section class="chapter compare" id="comparaison" data-title="Face à la concurrence" data-bg="#121110">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Les essais</p>
@@ -392,7 +382,7 @@
   </section>
 
   <!-- GAMME -->
-  <section class="chapter range" id="gamme-raidlight" data-title="La gamme Raidlight" data-bg="#121518">
+  <section class="chapter range" id="gamme-raidlight" data-title="La gamme Raidlight" data-bg="#121110">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Chez Raidlight</p>
@@ -437,8 +427,7 @@
   </section>
 
   <!-- INTERLUDE -->
-  <section class="interlude" aria-label="Sur les sentiers de la GTA" data-bg="#070b0d">
-    <p class="interlude-word" aria-hidden="true">Sentiers</p>
+  <section class="interlude" aria-label="Sur les sentiers de la GTA" data-bg="#0a0908">
     <div class="wrap interlude-grid">
       <figure class="ip ip-1" data-speed="8">
         <button class="zoomable" type="button" data-zoom="assets/gta-paysage.webp" data-caption="Sur les sentiers de la Grande Traversée des Alpes." aria-label="Agrandir : Sur les sentiers de la Grande Traversée des Alpes.">
@@ -446,10 +435,6 @@
         </button>
         <figcaption>Sur les sentiers de la Grande Traversée des Alpes.</figcaption>
       </figure>
-      <div class="interlude-copy">
-        <p class="eyebrow">644 km plus tard</p>
-        <p class="interlude-quote">Courir, marcher, vivre dehors. <span>Le même sac, du premier au dernier jour.</span></p>
-      </div>
       <figure class="ip ip-2" data-speed="-6">
         <button class="zoomable" type="button" data-zoom="assets/gta-course.webp" data-caption="En courant sur la GTA, le Raidlight sur le dos." aria-label="Agrandir : En courant sur la GTA, le Raidlight sur le dos.">
           <img src="assets/gta-course.webp" alt="En courant sur la GTA, le Raidlight sur le dos." loading="lazy" width="900" height="1600">
@@ -460,7 +445,7 @@
   </section>
 
   <!-- AIME -->
-  <section class="chapter loved" id="aime" data-title="Ce que j’ai aimé" data-bg="#0a1820">
+  <section class="chapter loved" id="aime" data-title="Ce que j’ai aimé" data-bg="#1b1309">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Les points forts</p>
@@ -473,8 +458,7 @@
             <button class="zoomable" type="button" data-zoom="assets/IMG_6033.webp" data-caption="Le volume du roll-top" aria-label="Agrandir : Le volume du roll-top"><img src="assets/IMG_6033.webp" alt="Le volume du roll-top" loading="lazy"></button>
           </figure>
           <div class="feature-copy">
-            <p class="ghost" aria-hidden="true">330 g</p>
-            <p class="eyebrow">Poids &amp; volume</p>
+            <div class="feature-tag"><span class="keyfig" aria-hidden="true">330 g</span><p class="eyebrow">Poids &amp; volume</p></div>
             <h3>Léger, avec le volume qu’il faut</h3>
             <p class="feature-lead"><strong>330 g et 24–30 L</strong> : tout mon matériel rentrait dedans, sans avoir un énorme sac sur le dos.</p>
             <details class="more">
@@ -492,8 +476,7 @@
             <button class="zoomable" type="button" data-zoom="assets/IMG_6232.webp" data-caption="Le sac chargé et son portage, vus de profil" aria-label="Agrandir : Le sac chargé et son portage, vus de profil"><img src="assets/IMG_6232.webp" alt="Le sac chargé et son portage, vus de profil" loading="lazy"></button>
           </figure>
           <div class="feature-copy">
-            <p class="ghost" aria-hidden="true">8 kg</p>
-            <p class="eyebrow">Portage</p>
+            <div class="feature-tag"><span class="keyfig" aria-hidden="true">8 kg</span><p class="eyebrow">Portage</p></div>
             <h3>Un portage qui suit le mouvement</h3>
             <p class="feature-lead"><strong>Stable autour de 8 kg</strong>, avec un réglage facile en marchant.</p>
             <details class="more">
@@ -511,8 +494,7 @@
             <button class="zoomable" type="button" data-zoom="assets/IMG_6177.webp" data-caption="Les poches avant en accès direct" aria-label="Agrandir : Les poches avant en accès direct"><img src="assets/IMG_6177.webp" alt="Les poches avant en accès direct" loading="lazy"></button>
           </figure>
           <div class="feature-copy">
-            <p class="ghost" aria-hidden="true">Accès</p>
-            <p class="eyebrow">Rangements</p>
+            <div class="feature-tag"><span class="keyfig" aria-hidden="true">Accès</span><p class="eyebrow">Rangements</p></div>
             <h3>Les affaires à portée de main</h3>
             <p class="feature-lead">Des poches accessibles et <strong>une place pour les petits essentiels</strong>.</p>
             <details class="more">
@@ -531,8 +513,7 @@
             <button class="zoomable" type="button" data-zoom="assets/IMG_6081.webp" data-caption="Le tissu et la poche extérieure après la GTA." aria-label="Agrandir : Le tissu et la poche extérieure après la GTA."><img src="assets/IMG_6081.webp" alt="Le tissu et la poche extérieure après la GTA." loading="lazy"></button>
           </figure>
           <div class="feature-copy">
-            <p class="ghost" aria-hidden="true">Ripstop</p>
-            <p class="eyebrow">Durabilité</p>
+            <div class="feature-tag"><span class="keyfig" aria-hidden="true">Ripstop</span><p class="eyebrow">Durabilité</p></div>
             <h3>Robustesse du tissu MAIS…</h3>
             <p class="feature-lead"><strong>Le tissu m’a agréablement surpris.</strong> Pour les coutures, en revanche, j’ai eu moins de chance.</p>
             <details class="more">
@@ -582,7 +563,7 @@
   </section>
 
   <!-- LIMITES -->
-  <section class="chapter limits" id="limites" data-title="Ce que j’ai moins aimé" data-bg="#1a100b">
+  <section class="chapter limits" id="limites" data-title="Ce que j’ai moins aimé" data-bg="#1e0f07">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow eyebrow-warn">Les points faibles</p>
@@ -649,7 +630,7 @@
   </section>
 
   <!-- AMELIORATIONS -->
-  <section class="chapter improve" id="ameliorations" data-title="Mes pistes d’amélioration" data-bg="#131417">
+  <section class="chapter improve" id="ameliorations" data-title="Mes pistes d’amélioration" data-bg="#141210">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Si j’étais chez Raidlight</p>
@@ -699,7 +680,8 @@
   </section>
 
   <!-- POUR QUI -->
-  <section class="chapter fit" id="pour-qui" data-title="Pour qui ?" data-bg="#0d1913">
+  <section class="chapter has-backdrop fit" id="pour-qui" data-title="Pour qui ?" data-bg="#15110c">
+    <img class="sec-backdrop" src="assets/bg-panorama.webp" alt="" width="1600" height="900" loading="lazy" data-speed="-7">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Le bon profil</p>
@@ -722,7 +704,7 @@
   </section>
 
   <!-- BILAN -->
-  <section class="chapter verdict" id="bilan" data-title="Le bilan" data-bg="#091522">
+  <section class="chapter verdict" id="bilan" data-title="Le bilan" data-bg="#17100a">
     <div class="wrap verdict-grid">
       <div class="verdict-copy">
         <header class="sec-head">
@@ -739,16 +721,17 @@
       <figure class="verdict-scene" id="verdict-scene">
         <div class="vs-frame">
           <img class="vs-bg" src="assets/gta-nice.webp" alt="L’arrivée à Nice, face à la mer." loading="lazy" width="900" height="1600">
+          <p class="vs-word" aria-hidden="true">Nice</p>
+          <img class="vs-fg" src="assets/nice-fg.webp" alt="" loading="lazy" width="900" height="1600">
         </div>
-        <p class="vs-word" aria-hidden="true">Nice</p>
-        <img class="vs-fg" src="assets/nice-fg.webp" alt="" loading="lazy" width="900" height="1600">
         <figcaption>L’arrivée à Nice, face à la mer.</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- A TESTER -->
-  <section class="chapter future" id="a-tester" data-title="Les sacs à tester" data-bg="#141519">
+  <section class="chapter has-backdrop future" id="a-tester" data-title="Les sacs à tester" data-bg="#131210">
+    <img class="sec-backdrop" src="assets/bg-pause.webp" alt="" width="1600" height="900" loading="lazy" data-speed="-7">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Petit bonus</p>
@@ -791,7 +774,7 @@
   </section>
 
   <!-- GALERIE -->
-  <section class="chapter gallery" id="galerie" data-title="Le carnet photo" data-bg="#0b1114">
+  <section class="chapter gallery" id="galerie" data-title="Le carnet photo" data-bg="#0f0d0b">
     <div class="wrap">
       <header class="sec-head gallery-head">
         <p class="eyebrow">26 photos, du terrain aux détails</p>
@@ -837,7 +820,7 @@
   </section>
 
   <!-- DISCUSSION -->
-  <section class="chapter discussion" id="commentaires" data-bg="#0b1114">
+  <section class="chapter discussion" id="commentaires" data-bg="#0f0d0b">
     <div class="wrap discussion-grid">
       <div>
         <p class="eyebrow">Ton avis compte</p>
@@ -870,7 +853,7 @@
 </div>
 
 <!-- ============ CONTACT ============ -->
-<section class="contact" id="contact" data-title="Contact" data-bg="#0b1114">
+<section class="contact" id="contact" data-title="Contact" data-bg="#0f0d0b">
   <img class="contact-bg" src="assets/gta-vanoise.webp" alt="" loading="lazy" data-speed="-8">
   <div class="wrap contact-inner">
     <p class="eyebrow">Du côté des marques</p>
@@ -884,7 +867,7 @@
 </section>
 
 <!-- ============ FURTHER READING ============ -->
-<section class="further" aria-labelledby="further-title" data-bg="#0b1114">
+<section class="further" aria-labelledby="further-title" data-bg="#0f0d0b">
   <div class="wrap">
     <header class="further-head">
       <p class="eyebrow">Bientôt dans le carnet</p>
@@ -916,7 +899,7 @@
   <p class="footer-word" aria-hidden="true">Carnet d’Endurance</p>
   <div class="wrap footer-inner">
     <a class="footer-brand" href="#haut"><img src="assets/logo-light.png" alt="Carnet d’Endurance" width="900" height="227" loading="lazy"></a>
-    <p>Carnet d’Endurance · Les aventures et le matériel de Malik</p>
+    <p>Carnet d’Endurance · Mes petites aventures et mes tests matos</p>
     <div class="footer-links">
       <a href="https://www.instagram.com/maliklatrouite/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://www.facebook.com/share/1Ji9u5Axjq/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a>

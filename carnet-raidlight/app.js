@@ -7,7 +7,6 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(pointer: fine)').matches;
   const hasGsap = !!(window.gsap && window.ScrollTrigger);
-  const TOTAL_KM = 644;
 
   if (hasGsap) gsap.registerPlugin(ScrollTrigger);
 
@@ -47,10 +46,9 @@
     scrollToTarget(t);
   });
 
-  /* ---------- Header, odometer, progress ---------- */
+  /* ---------- Header, progress ---------- */
   const header = $('#site-header');
   const bar = $('#progress-bar');
-  const odo = $('#odo');
   const backTop = $('#back-top');
   const btRing = $('#bt-ring');
   const article = $('#article');
@@ -67,11 +65,6 @@
     if (bar) bar.style.transform = `scaleX(${p})`;
     if (btRing) btRing.style.strokeDashoffset = String(132 * (1 - p));
     backTop?.classList.toggle('is-visible', y > innerHeight * 0.8);
-    if (odo && article) {
-      const r = article.getBoundingClientRect();
-      const ap = Math.min(1, Math.max(0, (innerHeight * 0.5 - r.top) / r.height));
-      odo.textContent = String(Math.round(ap * TOTAL_KM)).padStart(3, '0');
-    }
   }
   if (lenis) lenis.on('scroll', onScroll); else window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
@@ -103,11 +96,20 @@
   /* ---------- Hero: split word ---------- */
   const word = $('#hero-word');
   if (word && !reduce) {
-    $$('.w-row', word).forEach((row) => {
-      const txt = row.textContent;
-      row.textContent = '';
-      [...txt].forEach((c) => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; row.appendChild(s); });
-    });
+    // split every text node into letters, keeping nested spans (the size in gold) and spaces
+    const splitNode = (node) => {
+      [...node.childNodes].forEach((n) => {
+        if (n.nodeType === 1) { splitNode(n); return; }
+        if (n.nodeType !== 3) return;
+        const frag = document.createDocumentFragment();
+        [...n.textContent].forEach((c) => {
+          if (/\s/.test(c)) { frag.appendChild(document.createTextNode(' ')); return; }
+          const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; frag.appendChild(s);
+        });
+        n.replaceWith(frag);
+      });
+    };
+    $$('.w-row', word).forEach(splitNode);
     word.classList.add('is-split');
   }
 
@@ -182,13 +184,14 @@
   /* ---------- Motion (GSAP) ---------- */
   if (hasGsap && !reduce) {
     const mm = gsap.matchMedia();
-    const heroBg = $('.hero-bg'), heroFg = $('.hero-fg');
+    const heroLand = $('.hero-land'), heroFg = $('.hero-fg');
     const chars = $$('#hero-word .ch');
 
     // Hero intro: photo settles, letters rise behind the subject
     gsap.timeline({ defaults: { ease: 'expo.out' }, onStart: () => runCounters($('.hero-stats')) })
-      .from([heroBg, heroFg], { scale: 1.1, duration: 2.4, ease: 'power3.out', transformOrigin: '50% 40%' }, 0)
-      .from(chars, { yPercent: 110, opacity: 0, duration: 1.4, stagger: 0.045 }, 0.25)
+      .from(heroLand, { scale: 1.16, duration: 2.8, ease: 'power3.out' }, 0)
+      .from(heroFg, { scale: 1.08, yPercent: 4, duration: 2.4, ease: 'power3.out', transformOrigin: '50% 100%' }, 0)
+      .from(chars, { yPercent: 110, opacity: 0, duration: 1.4, stagger: 0.035 }, 0.25)
       .from('.hero-copy > *', { y: 28, opacity: 0, duration: 1.2, stagger: 0.08 }, 0.7)
       .from('.hero-photo-label', { opacity: 0, x: 20, duration: 1 }, 1.1)
       .from('.hero-stats .stat', { y: 24, opacity: 0, duration: 1, stagger: 0.08 }, 1)
@@ -196,15 +199,17 @@
 
     // Hero scroll depth: photo + cut-out drift together, the word drifts faster
     gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } })
-      .to([heroBg, heroFg], { yPercent: 8, ease: 'none' }, 0)
-      .to('#hero-word', { yPercent: 75, opacity: 0.2, ease: 'none' }, 0)
+      .to(heroLand, { yPercent: 14, ease: 'none' }, 0)
+      .to('#hero-word', { yPercent: 55, opacity: 0.2, ease: 'none' }, 0)
+      .to(heroFg, { yPercent: 4, ease: 'none' }, 0)
       .to('.hero-content', { y: -60, opacity: 0, ease: 'none' }, 0);
 
     mm.add('(pointer: fine) and (min-width: 901px)', () => {
       const hero = $('.hero');
       const xW = gsap.quickTo('#hero-word', 'x', { duration: 1.2, ease: 'power3' });
-      const xL = gsap.quickTo([heroBg, heroFg], 'x', { duration: 1.4, ease: 'power3' });
-      const move = (e) => { const k = e.clientX / innerWidth - 0.5; xW(k * -28); xL(k * 12); };
+      const xB = gsap.quickTo(heroLand, 'x', { duration: 1.6, ease: 'power3' });
+      const xF = gsap.quickTo(heroFg, 'x', { duration: 1.3, ease: 'power3' });
+      const move = (e) => { const k = e.clientX / innerWidth - 0.5; xB(k * 10); xW(k * -18); xF(k * -34); };
       hero.addEventListener('pointermove', move);
       return () => hero.removeEventListener('pointermove', move);
     });
@@ -239,16 +244,10 @@
     $$('.feature-media img').forEach((img) => {
       gsap.fromTo(img, { yPercent: -14 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: img.closest('.feature'), start: 'top bottom', end: 'bottom top', scrub: true } });
     });
-    $$('.ghost').forEach((g) => {
-      gsap.fromTo(g, { xPercent: -6 }, { xPercent: 6, ease: 'none', scrollTrigger: { trigger: g.closest('.feature'), start: 'top bottom', end: 'bottom top', scrub: true } });
-    });
 
     // Bars
     gsap.from('.weigh-bar i', { scaleX: 0, duration: 1.6, ease: 'expo.out', stagger: 0.12, scrollTrigger: { trigger: '.weigh', start: 'top 85%', once: true } });
     gsap.from('.litres i', { scaleX: 0, duration: 1.4, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: '.range-row', start: 'top 80%', once: true } });
-
-    // Interlude word
-    gsap.fromTo('.interlude-word', { xPercent: 12 }, { xPercent: -12, ease: 'none', scrollTrigger: { trigger: '.interlude', start: 'top bottom', end: 'bottom top', scrub: true } });
 
     // Knob follows the scroll
     if (knob) {
@@ -258,10 +257,10 @@
 
     // Verdict scene
     gsap.fromTo('.vs-word', { yPercent: 40, opacity: 0.3 }, { yPercent: -10, opacity: 1, ease: 'none', scrollTrigger: { trigger: '.verdict-scene', start: 'top 90%', end: 'center 45%', scrub: true } });
-    gsap.fromTo('.vs-bg', { scale: 1.12 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.verdict-scene', start: 'top bottom', end: 'bottom top', scrub: true } });
+    // photo and its cut-out zoom as ONE layer so they never drift apart
+    gsap.fromTo(['.vs-bg', '.vs-fg'], { scale: 1.12 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.verdict-scene', start: 'top bottom', end: 'bottom top', scrub: true } });
 
     gsap.fromTo('.contact-inner > *', { y: 40, opacity: 0.25 }, { y: 0, opacity: 1, stagger: 0.08, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.contact', start: 'top 75%', once: true } });
-    gsap.fromTo('.footer-word', { yPercent: 40 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: '.site-footer', start: 'top bottom', end: 'bottom bottom', scrub: true } });
 
     window.addEventListener('load', () => ScrollTrigger.refresh());
   } else {
@@ -284,17 +283,41 @@
   const steps = $$('.story-step');
   const frames = $$('.story-frame .frame-item');
   const dots = $$('.story-dots span');
-  if (steps.length && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (!en.isIntersecting) return;
-        const i = en.target.dataset.step;
-        steps.forEach((s) => s.classList.toggle('is-on', s === en.target));
-        frames.forEach((f) => f.classList.toggle('is-on', f.dataset.step === i));
-        dots.forEach((d, n) => d.classList.toggle('is-on', String(n) === i));
+  if (steps.length) {
+    /* Each paragraph stays fully lit while it is being read: it brightens as it
+       climbs into the screen and only dims once its LAST line has gone past the
+       upper third. The photo only changes once the next paragraph has climbed past mid-screen,
+       i.e. when the previous one has been read. */
+    const story = $('.story');
+    const ramp = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a)));
+    let current = '0', ticking = false;
+    const update = () => {
+      ticking = false;
+      const H = innerHeight;
+      let active = steps[0].dataset.step;
+      steps.forEach((s) => {
+        const r = s.getBoundingClientRect();
+        const lit = Math.min(ramp(H * .96 - r.top, 0, H * .26), ramp(r.bottom, H * .06, H * .3));
+        s.style.setProperty('--lit', (.32 + .68 * lit).toFixed(3));
+        if (r.top < H * .5) active = s.dataset.step;
       });
-    }, { rootMargin: '-45% 0px -45% 0px' });
-    steps.forEach((s) => io.observe(s));
+      if (active !== current) {
+        current = active;
+        steps.forEach((s) => s.classList.toggle('is-on', s.dataset.step === active));
+        frames.forEach((f) => f.classList.toggle('is-on', f.dataset.step === active));
+        dots.forEach((d, n) => d.classList.toggle('is-on', String(n) === active));
+      }
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    if (story && 'IntersectionObserver' in window) {
+      let live = false;
+      new IntersectionObserver(([en]) => {
+        if (en.isIntersecting && !live) { live = true; addEventListener('scroll', onScroll, { passive: true }); update(); }
+        else if (!en.isIntersecting && live) { live = false; removeEventListener('scroll', onScroll); }
+      }).observe(story);
+    } else { addEventListener('scroll', onScroll, { passive: true }); }
+    addEventListener('resize', onScroll);
+    update();
   }
 
   /* ---------- Side contents + mobile pill ---------- */

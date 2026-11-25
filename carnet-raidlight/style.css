@@ -173,6 +173,9 @@ p { margin: 0; }
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .hero-word.is-split .w-row, .hero-word.is-split .w-size { background: none; }
+/* The gradient fill is clipped to each box; with the tight .84 line-height the box is
+   shorter than the capitals, so extend it upward (and back with a negative margin). */
+.hero-word:not(.is-split) .w-row, .hero-word.is-split .ch { padding-top: .16em; margin-top: -.16em; padding-bottom: .04em; margin-bottom: -.04em; }
 .hero-word .ch { display: inline-block; will-change: transform; }
 .hero-scrim { position: absolute; inset: 0; z-index: 4; pointer-events: none; background: linear-gradient(to top, rgba(var(--scrim), .97) 0%, rgba(var(--scrim), .78) 18%, rgba(var(--scrim), 0) 52%), radial-gradient(60% 50% at 0% 85%, rgba(var(--scrim), .7), rgba(var(--scrim), 0) 75%), linear-gradient(to bottom, rgba(var(--scrim), .5), rgba(var(--scrim), 0) 18%); }
 .hero-content { position: absolute; z-index: 5; left: 0; right: 0; bottom: 118px; max-width: none; }

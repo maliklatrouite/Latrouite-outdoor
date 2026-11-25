@@ -271,7 +271,7 @@ p { margin: 0; }
 .toc-sheet a:hover, .toc-sheet a.is-active { background: var(--ink-3); color: var(--glow); }
 
 /* ---------- À retenir ---------- */
-.resume { padding-block: clamp(7rem, 15vw, 13rem) clamp(5rem, 9vw, 8rem); }
+.resume { padding-block: clamp(4.5rem, 8vw, 7rem); }
 .resume-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(1.5rem, 4vw, 3.5rem); padding: clamp(1.4rem, 3vw, 2.6rem); border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(150deg, rgba(227, 160, 74, .08), rgba(13, 11, 9, .35) 55%), rgba(13, 11, 9, .5); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .8); }
 .resume .sec-head { margin-bottom: 1.2rem; }
 .resume-main { display: grid; gap: 1.4rem; align-content: start; }
@@ -403,19 +403,15 @@ a.credit:hover { color: var(--paper-ink); }
 .range-row { margin-bottom: 1.2rem; }
 .range-row .vcard-media { height: 270px; align-items: flex-end; }
 
-/* ---------- Photo backdrops (depth instead of flat colour) ---------- */
-.has-backdrop { position: relative; isolation: isolate; overflow: clip; }
-.sec-backdrop { position: absolute; z-index: -1; left: 0; top: -8%; width: 100%; height: 116%; object-fit: cover; pointer-events: none;
-  filter: grayscale(.55) sepia(.45) saturate(.75) brightness(.36) contrast(1.1) blur(2px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 72%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 72%, transparent 100%); }
-
-/* Sharp, high-quality landscape (only darkened and warmed, not blurred) */
-.sec-backdrop.is-hq { object-position: 50% 30%; filter: grayscale(.3) sepia(.32) saturate(.85) brightness(.52) contrast(1.06);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 80%, transparent 100%); }
-.photo-credit { position: absolute; right: max(var(--gutter), env(safe-area-inset-right, 0px)); bottom: 1.2rem; margin: 0; max-width: 34rem; text-align: right; font-size: .68rem; line-height: 1.5; color: rgba(244, 241, 235, .45); }
-.photo-credit a { color: inherit; }
+/* ---------- Scroll journey (fixed landscape band behind the page) ---------- */
+.journey { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.journey img { position: absolute; left: 0; top: 50%; width: 100%; height: max(74vh, 40vw); max-height: 112vh; object-fit: cover; object-position: 50% 45%;
+  opacity: 0; transform: translate3d(0, calc(-50% + var(--jy, 0px)), 0) scale(1.04); transition: opacity 1.8s var(--ease);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 26%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 26%, #000 70%, transparent 100%); will-change: opacity, transform; }
+.journey img.is-on { opacity: var(--jo, .5); }
+@media (max-width: 700px) { .journey img.is-on { opacity: calc(var(--jo, .5) * .78); } }
+.journey::after { content: ""; position: absolute; inset: 0; background: radial-gradient(90% 70% at 50% 50%, transparent 30%, rgba(var(--scrim), .55) 100%); }
 
 /* ---------- Interlude ---------- */
 .interlude { position: relative; padding-block: clamp(6rem, 12vw, 11rem); overflow: hidden; }
@@ -656,6 +652,8 @@ details[open]::details-content { block-size: auto; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 1.4rem; }
 .footer-links a { font-size: .88rem; font-weight: 600; text-decoration: none; color: var(--mist); transition: color .3s; }
 .footer-links a:hover { color: var(--glow); }
+.footer-credits { margin-top: 1.6rem; font-size: .7rem; line-height: 1.6; color: rgba(244, 241, 235, .38); }
+.footer-credits a { color: inherit; }
 
 /* ---------- Floating ---------- */
 .back-top { position: fixed; z-index: 70; right: max(18px, env(safe-area-inset-right, 0px)); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; color: var(--snow); background: rgba(24, 21, 18, .85); backdrop-filter: blur(10px); opacity: 0; transform: translateY(20px) scale(.9); pointer-events: none; transition: opacity .4s var(--ease), transform .4s var(--ease); }

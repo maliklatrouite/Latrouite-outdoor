@@ -51,10 +51,22 @@
   </nav>
 </div>
 
+<!-- Scroll journey: one fixed landscape band behind the page, following the GTA
+     from the Chablais at dawn to Nice at dusk; every photo shares the same colour grade -->
+<div class="journey" id="journey" aria-hidden="true">
+  <img data-scene="percee" data-src="assets/j-percee.webp" alt="">
+  <img data-scene="montblanc" data-src="assets/j-montblanc.webp" alt="">
+  <img data-scene="roy" data-src="assets/j-roy.webp" alt="">
+  <img data-scene="minesdor" data-src="assets/j-minesdor.webp" alt="">
+  <img data-scene="ridge" data-src="assets/j-ridge.webp" alt="">
+  <img data-scene="vanoise" data-src="assets/j-vanoise.webp" alt="">
+  <img data-scene="allos" data-src="assets/j-allos.webp" alt="">
+</div>
+
 <main>
 
 <!-- ============ HERO ============ -->
-<section class="hero" id="haut" aria-labelledby="hero-title" data-bg="#0f0d0b">
+<section class="hero" id="haut" aria-labelledby="hero-title" data-bg="#0f0d0b" data-scene="none">
   <img class="hero-land" src="assets/hero-mountains.webp" alt="" width="1440" height="1024" fetchpriority="high">
   <div class="hero-stage" id="hero-stage">
     <img class="hero-fg" fetchpriority="high" src="assets/hero6232-fg.webp" alt="Malik porte le Raidlight Ultralight 24–30 L chargé, vu de profil" width="1800" height="2400">
@@ -98,7 +110,7 @@
 </section>
 
 <!-- ============ PROLOGUE ============ -->
-<section class="prologue" aria-label="Derrière ce carnet" data-bg="#0f0d0b">
+<section class="prologue" aria-label="Derrière ce carnet" data-bg="#0f0d0b" data-scene="percee" data-scene-o=".6">
   <div class="wrap author-band">
     <div class="author-card">
       <button class="author-portrait zoomable" type="button" data-zoom="assets/malik-portrait-v9.jpg" data-caption="Malik, en course à pied." aria-label="Agrandir : Malik, en course à pied.">
@@ -157,8 +169,7 @@
   <div class="toc-sheet" id="toc-sheet" hidden></div>
 
   <!-- RESUME -->
-  <section class="chapter resume has-backdrop" id="resume" data-title="À retenir" data-bg="#0f0d0b">
-    <img class="sec-backdrop is-hq" src="assets/bg-montblanc.webp" alt="" width="1920" height="829" loading="lazy" data-speed="-5">
+  <section class="chapter resume" id="resume" data-title="À retenir" data-bg="#0f0d0b" data-scene="montblanc" data-scene-o=".55">
     <div class="wrap">
       <div class="resume-card" data-reveal>
         <div class="resume-main">
@@ -194,11 +205,10 @@
         </div>
       </div>
     </div>
-    <p class="photo-credit">Le mont Blanc depuis le lac de Joux Plane, sur le GR5. Photo : <a href="https://commons.wikimedia.org/wiki/File:Massif_du_Mont-Blanc_from_Lac_de_Joux_Plane_03.jpg" target="_blank" rel="noopener noreferrer">Krzysztof Golik</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, recadrée et assombrie.</p>
   </section>
 
   <!-- CONTEXTE -->
-  <section class="chapter contexte" id="contexte" data-title="Le contexte" data-bg="#15110c">
+  <section class="chapter contexte" id="contexte" data-title="Le contexte" data-bg="#15110c" data-scene="roy" data-scene-o=".4">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Pourquoi ce sac ?</p>
@@ -275,7 +285,7 @@
   </section>
 
   <!-- CARACTERISTIQUES -->
-  <section class="chapter specs" id="caracteristiques" data-title="Les caractéristiques" data-bg="#121110">
+  <section class="chapter specs" id="caracteristiques" data-title="Les caractéristiques" data-bg="#121110" data-scene="minesdor" data-scene-o=".45">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Fiche technique</p>
@@ -314,7 +324,7 @@
   </section>
 
   <!-- COMPARAISON -->
-  <section class="chapter compare" id="comparaison" data-title="Face à la concurrence" data-bg="#121110">
+  <section class="chapter compare" id="comparaison" data-title="Face à la concurrence" data-bg="#121110" data-scene="minesdor" data-scene-o=".45">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Les essais</p>
@@ -384,7 +394,7 @@
   </section>
 
   <!-- GAMME -->
-  <section class="chapter range" id="gamme-raidlight" data-title="La gamme Raidlight" data-bg="#121110">
+  <section class="chapter range" id="gamme-raidlight" data-title="La gamme Raidlight" data-bg="#121110" data-scene="minesdor" data-scene-o=".45">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Chez Raidlight</p>
@@ -429,7 +439,7 @@
   </section>
 
   <!-- INTERLUDE -->
-  <section class="interlude" aria-label="Sur les sentiers de la GTA" data-bg="#0a0908">
+  <section class="interlude" aria-label="Sur les sentiers de la GTA" data-bg="#0a0908" data-scene="ridge" data-scene-o=".6">
     <div class="wrap interlude-grid">
       <figure class="ip ip-1" data-speed="8">
         <button class="zoomable" type="button" data-zoom="assets/gta-paysage.webp" data-caption="Sur les sentiers de la Grande Traversée des Alpes." aria-label="Agrandir : Sur les sentiers de la Grande Traversée des Alpes.">
@@ -447,7 +457,7 @@
   </section>
 
   <!-- AIME -->
-  <section class="chapter loved" id="aime" data-title="Ce que j’ai aimé" data-bg="#1b1309">
+  <section class="chapter loved" id="aime" data-title="Ce que j’ai aimé" data-bg="#1b1309" data-scene="ridge" data-scene-o=".45">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Les points forts</p>
@@ -565,7 +575,7 @@
   </section>
 
   <!-- LIMITES -->
-  <section class="chapter limits" id="limites" data-title="Ce que j’ai moins aimé" data-bg="#1e0f07">
+  <section class="chapter limits" id="limites" data-title="Ce que j’ai moins aimé" data-bg="#1e0f07" data-scene="vanoise" data-scene-o=".4">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow eyebrow-warn">Les points faibles</p>
@@ -632,7 +642,7 @@
   </section>
 
   <!-- AMELIORATIONS -->
-  <section class="chapter improve" id="ameliorations" data-title="Mes pistes d’amélioration" data-bg="#141210">
+  <section class="chapter improve" id="ameliorations" data-title="Mes pistes d’amélioration" data-bg="#141210" data-scene="vanoise" data-scene-o=".45">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Si j’étais chez Raidlight</p>
@@ -682,8 +692,7 @@
   </section>
 
   <!-- POUR QUI -->
-  <section class="chapter has-backdrop fit" id="pour-qui" data-title="Pour qui ?" data-bg="#15110c">
-    <img class="sec-backdrop" src="assets/bg-panorama.webp" alt="" width="1600" height="900" loading="lazy" data-speed="-7">
+  <section class="chapter fit" id="pour-qui" data-title="Pour qui ?" data-bg="#15110c" data-scene="allos" data-scene-o=".55">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Le bon profil</p>
@@ -706,7 +715,7 @@
   </section>
 
   <!-- BILAN -->
-  <section class="chapter verdict" id="bilan" data-title="Le bilan" data-bg="#17100a">
+  <section class="chapter verdict" id="bilan" data-title="Le bilan" data-bg="#17100a" data-scene="allos" data-scene-o=".42">
     <div class="wrap verdict-grid">
       <div class="verdict-copy">
         <header class="sec-head">
@@ -732,8 +741,7 @@
   </section>
 
   <!-- A TESTER -->
-  <section class="chapter has-backdrop future" id="a-tester" data-title="Les sacs à tester" data-bg="#131210">
-    <img class="sec-backdrop" src="assets/bg-pause.webp" alt="" width="1600" height="900" loading="lazy" data-speed="-7">
+  <section class="chapter future" id="a-tester" data-title="Les sacs à tester" data-bg="#131210" data-scene="allos" data-scene-o=".3">
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Petit bonus</p>
@@ -776,7 +784,7 @@
   </section>
 
   <!-- GALERIE -->
-  <section class="chapter gallery" id="galerie" data-title="Le carnet photo" data-bg="#0f0d0b">
+  <section class="chapter gallery" id="galerie" data-title="Le carnet photo" data-bg="#0f0d0b" data-scene="none">
     <div class="wrap">
       <header class="sec-head gallery-head">
         <p class="eyebrow">26 photos, du terrain aux détails</p>
@@ -822,7 +830,7 @@
   </section>
 
   <!-- DISCUSSION -->
-  <section class="chapter discussion" id="commentaires" data-bg="#0f0d0b">
+  <section class="chapter discussion" id="commentaires" data-bg="#0f0d0b" data-scene="none">
     <div class="wrap discussion-grid">
       <div>
         <p class="eyebrow">Ton avis compte</p>
@@ -855,7 +863,7 @@
 </div>
 
 <!-- ============ CONTACT ============ -->
-<section class="contact" id="contact" data-title="Contact" data-bg="#0f0d0b">
+<section class="contact" id="contact" data-title="Contact" data-bg="#0f0d0b" data-scene="none">
   <img class="contact-bg" src="assets/gta-vanoise.webp" alt="" loading="lazy" data-speed="-8">
   <div class="wrap contact-inner">
     <p class="eyebrow">Du côté des marques</p>
@@ -869,7 +877,7 @@
 </section>
 
 <!-- ============ FURTHER READING ============ -->
-<section class="further" aria-labelledby="further-title" data-bg="#0f0d0b">
+<section class="further" aria-labelledby="further-title" data-bg="#0f0d0b" data-scene="none">
   <div class="wrap">
     <header class="further-head">
       <p class="eyebrow">Bientôt dans le carnet</p>
@@ -908,6 +916,7 @@
       <a href="#haut">Haut de page ↑</a>
     </div>
   </div>
+  <p class="wrap footer-credits">Paysages en fond de page : <a href="https://commons.wikimedia.org/wiki/File:Pointe_Percee_from_Lac_de_Joux_Plane_05.jpg" target="_blank" rel="noopener noreferrer">pointe Percée</a>, <a href="https://commons.wikimedia.org/wiki/File:Massif_du_Mont-Blanc_from_Lac_de_Joux_Plane_03.jpg" target="_blank" rel="noopener noreferrer">mont Blanc</a>, <a href="https://commons.wikimedia.org/wiki/File:Lac_de_Roy_10.jpg" target="_blank" rel="noopener noreferrer">lac de Roy</a> et <a href="https://commons.wikimedia.org/wiki/File:Lac_des_Mines_d%27Or_02.jpg" target="_blank" rel="noopener noreferrer">lac des Mines d’Or</a> par Krzysztof Golik ; <a href="https://commons.wikimedia.org/wiki/File:Mont_Pelat_%2B_Lake_Allos_tour_17.jpg" target="_blank" rel="noopener noreferrer">lac d’Allos</a> par kallerna. Wikimedia Commons, licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, recadrées et recolorées.</p>
 </footer>
 
 <a class="back-top" id="back-top" href="#haut" aria-label="Retour en haut du test">

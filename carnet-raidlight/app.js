@@ -71,12 +71,43 @@
   onScroll();
 
   /* ---------- Background hue per chapter ---------- */
+  /* Journey: the section crossing mid-screen sets both the ground colour and the landscape
+     shown in the fixed band; the next landscape on the route is preloaded. */
+  const journey = $('#journey');
+  const scenes = journey ? Object.fromEntries($$('img[data-scene]', journey).map((img) => [img.dataset.scene, img])) : {};
+  const sceneOrder = $$('[data-scene]:not(img)').map((el) => el.dataset.scene);
+  const loadScene = (name) => { const img = scenes[name]; if (img && !img.getAttribute('src')) img.src = img.dataset.src; };
+  let currentScene = null;
+  function setScene(name, strength) {
+    if (!journey) return;
+    journey.style.setProperty('--jo', strength);
+    if (name === currentScene) return;
+    currentScene = name;
+    loadScene(name);
+    const i = sceneOrder.indexOf(name);
+    const next = sceneOrder.slice(i + 1).find((n) => n !== name && n !== 'none');
+    if (next) loadScene(next);
+    Object.entries(scenes).forEach(([n, img]) => img.classList.toggle('is-on', n === name));
+  }
   const bgSections = $$('[data-bg]');
   if (bgSections.length && 'IntersectionObserver' in window) {
     const bgIO = new IntersectionObserver((entries) => {
-      entries.forEach((en) => { if (en.isIntersecting) document.body.style.backgroundColor = en.target.dataset.bg; });
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        document.body.style.backgroundColor = en.target.dataset.bg;
+        if (en.target.dataset.scene) setScene(en.target.dataset.scene, en.target.dataset.sceneO || '.5');
+      });
     }, { rootMargin: '-48% 0px -48% 0px' });
     bgSections.forEach((s) => bgIO.observe(s));
+  }
+  if (journey && !reduce) {
+    let jt = false;
+    const drift = () => {
+      jt = false;
+      const max = document.documentElement.scrollHeight - innerHeight;
+      journey.style.setProperty('--jy', `${(3 - (max > 0 ? scrollY / max : 0) * 6).toFixed(2)}vh`);
+    };
+    addEventListener('scroll', () => { if (!jt) { jt = true; requestAnimationFrame(drift); } }, { passive: true });
   }
 
   /* ---------- Mobile menu ---------- */

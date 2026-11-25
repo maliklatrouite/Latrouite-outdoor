@@ -271,8 +271,8 @@ p { margin: 0; }
 .toc-sheet a:hover, .toc-sheet a.is-active { background: var(--ink-3); color: var(--glow); }
 
 /* ---------- À retenir ---------- */
-.resume { padding-block: clamp(3.5rem, 6vw, 5rem); }
-.resume-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(1.5rem, 4vw, 3.5rem); padding: clamp(1.4rem, 3vw, 2.6rem); border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(150deg, rgba(227, 160, 74, .07), rgba(244, 241, 235, .025) 55%); }
+.resume { padding-block: clamp(7rem, 15vw, 13rem) clamp(5rem, 9vw, 8rem); }
+.resume-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(1.5rem, 4vw, 3.5rem); padding: clamp(1.4rem, 3vw, 2.6rem); border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(150deg, rgba(227, 160, 74, .08), rgba(13, 11, 9, .35) 55%), rgba(13, 11, 9, .5); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .8); }
 .resume .sec-head { margin-bottom: 1.2rem; }
 .resume-main { display: grid; gap: 1.4rem; align-content: start; }
 .lead-statement { font: 400 clamp(1.3rem, 1rem + 1vw, 1.75rem)/1.35 var(--futura); }
@@ -409,6 +409,13 @@ a.credit:hover { color: var(--paper-ink); }
   filter: grayscale(.55) sepia(.45) saturate(.75) brightness(.36) contrast(1.1) blur(2px);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 72%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 72%, transparent 100%); }
+
+/* Sharp, high-quality landscape (only darkened and warmed, not blurred) */
+.sec-backdrop.is-hq { object-position: 50% 30%; filter: grayscale(.3) sepia(.32) saturate(.85) brightness(.52) contrast(1.06);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 80%, transparent 100%); }
+.photo-credit { position: absolute; right: max(var(--gutter), env(safe-area-inset-right, 0px)); bottom: 1.2rem; margin: 0; max-width: 34rem; text-align: right; font-size: .68rem; line-height: 1.5; color: rgba(244, 241, 235, .45); }
+.photo-credit a { color: inherit; }
 
 /* ---------- Interlude ---------- */
 .interlude { position: relative; padding-block: clamp(6rem, 12vw, 11rem); overflow: hidden; }
